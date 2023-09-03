@@ -1,3 +1,5 @@
+import numpy as np
+
 
 def read_ESC_file(esc_file):
     """ Reads the ESC file and returns the dictionary with all the data"""
@@ -23,7 +25,14 @@ def read_ESC_file(esc_file):
     return data
 
 
+def get_static_means(data = np.array([]), f = 100, dt = 10, front_offset = 600, aft_offset = 100):
+    """Returns an array of means for the given data"""
+    n = len(data)
+    t = n/f
+    n_mean = int(t/dt)
+    mean_data = [np.mean(data[(i*(dt*f) + front_offset): (i+1)*(dt*f) - aft_offset]) for i in range(n_mean)]
+    return mean_data
+
+
 if __name__=="__main__":
-    dir = "../../StaticData/WithProp_PWM_in/p_steps_data_fine/"
-    esc_file= dir + "ESC_data_fine.csv"
-    data = read_ESC_file(esc_file)
+    a = 10
