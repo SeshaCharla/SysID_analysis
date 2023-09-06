@@ -1,3 +1,5 @@
+import numpy as np
+
 
 a = 22.6
 b = -51
