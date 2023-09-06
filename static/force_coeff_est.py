@@ -104,5 +104,4 @@ plt.text(200, 0.035, r'$M_f = {}$'.format(M_f))
 plt.text(200, 0.025, r'$R^2 = {}$'.format(np.round(R_D,2)))
 plt.savefig("figs/Drag_curve.eps", bbox_inches='tight')
 
-
 plt.show()
