@@ -7,6 +7,6 @@ M_f = 1.3135 * 10**(-3)
 
 
 # Input definition
-a_gw = 0.06962415314908484
-b_gw = -64.3266432829062
-gw = lambda u_p: a_gw * u_p + b
+a_fu = 0.06962415314908484
+b_fu = -64.3266432829062
+fu = lambda u_p: a_fu * u_p + b_fu
