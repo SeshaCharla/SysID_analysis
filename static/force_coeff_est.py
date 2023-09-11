@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.optimize import nnls     # non-negative least-squares
 import matplotlib.pyplot as plt
-import read_data as rd
+import lib as rd
 
 
 # The code is for estimating the C_T and C_D of the propeller
