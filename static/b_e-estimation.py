@@ -43,33 +43,24 @@ V_hat = np.mean([V_10, V_50])
 
 
 # Parameter estimation
-omega_2 = omega**2
-b = p.C_D * omega_2
-A = np.matrix([(V_hat*u_w)-omega]).T
+b = u_w
+A = np.matrix([u_p**2, u_p, np.ones(np.shape(u_p))]).T
 
 # Linear least-squares
-lb = [0]
-ub = [np.Inf]
-sol = lsq_linear(A, b, bounds=(lb, ub))
+sol = lsq_linear(A, b)
 
 #
-b_e = sol.x[0]
-
-# Validation
-
-g_inv = lambda w: (1/(p.b_e*V_hat))*(p.b_e * w  + (p.C_D * w**2) + p.M_f)
-
 # Plots
 
 plt.figure(1)
-plt.scatter(omega, u_w, marker="+", label='Expt. Data')
-plt.plot(omega, g_inv(omega), color="C1", label=r'Model')
-plt.ylabel(r'Normalized no-load angular velocity ($u_\omega$)')
-plt.xlabel(r'$\omega$')
+plt.scatter(u_p, u_w, marker="+", label='Expt. Data')
+# plt.plot(omega, g_inv(omega), color="C1", label=r'Model')
+plt.ylabel(r'Normalized angular velocity ($u_\omega$)')
+plt.xlabel(r'PWM input $u_p$')
 plt.grid()
 plt.legend()
 # plt.text(1300, 40, r'$a = {} \qquad b = {}$'.format(np.round(popt[0],4), np.round(popt[1],4)))
 # plt.text(1400, 30, r'$R^2 = {}$'.format(np.round(R,2)))
-plt.savefig("figs/gw_validation.eps", bbox_inches='tight')
+plt.savefig("figs/u_w.eps", bbox_inches='tight')
 
 plt.show()
