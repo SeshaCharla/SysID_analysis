@@ -3,7 +3,7 @@ clear; close all; clc;
 addpath("libs\");
 %% Getting the data
 dirs = get_dir;
-[fs, expt, N, input_period] = expt_details();
+[fs, expt, N, input_period, Vin] = expt_details();
 [u, omega] = get_data(dirs.sos, N, expt);               % Get the data
 %% Creating perturbation data
 fl = 30;
@@ -47,3 +47,5 @@ for i = 1:N
 end
 % Comparing the results in time domain
 sys_compare(idc_data, tr_funcs, N, nom, expt);
+%% Save parameter data
+save("libs\tf_parms.mat", "pvec", "dpvec", '-mat');
