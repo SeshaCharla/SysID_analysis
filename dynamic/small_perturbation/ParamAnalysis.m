@@ -12,7 +12,7 @@ p_tf = read_parms(N);
 figure()
 hold on;
 plot(nom.u, p_tf.K, "+-")
-plot_var(gca, nom.u, p_tf.K, p_tf.sig_K, 1, N)
+plot_var(gca, nom.u, p_tf.K, p_tf.sig_K, 2, N)
 plot(nom.u, Vin, "o-")
 xlabel('$u_{\omega_0}$', 'Interpreter','latex');
 ylabel('$K = V_{in}$', 'Interpreter','latex');
@@ -33,13 +33,18 @@ J = 2*p.C_D/CD2_Jinv;    % Kg. m^2
 b_m = bm_Jinv*J;
 fwc = @(omega) (1/J)*(b_m + 2*p.C_D*omega);
 %% Plots
+R = calc_R2(p_tf.omega, fwc(nom.omega));
 figure()
 hold on;
 plot(nom.omega, p_tf.omega);
-plot_var(gca, nom.omega, p_tf.omega, p_tf.sig_omega, 1, N);
+plot_var(gca, nom.omega, p_tf.omega, p_tf.sig_omega, 2, N);
 plot(nom.omega, fwc(nom.omega));
 xlabel('$\omega_0$', 'Interpreter','latex');
 ylabel('$\omega_m$', 'Interpreter', 'latex');
+text(400, 15, '$R^2 =$ '+string(round(R, 2)), 'Interpreter', 'latex');
+text(400, 19, '$J =$ '+string(J),'Interpreter', 'latex');
+text(400, 18, '$b_m =$ '+string(b_m),'Interpreter', 'latex');
+text(400, 17, '$C_D =$ '+string(p.C_D),'Interpreter', 'latex');
 hold off;
 grid on;
 legend('Data: $\omega_m$','','Fit: $\omega_m = \frac{1}{J} (b_m + 2 C_D \omega_0)$','Location','best','Interpreter','Latex')
