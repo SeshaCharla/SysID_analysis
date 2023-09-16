@@ -1,7 +1,8 @@
 function u_w = fu(u_p)
     % Function for u_p to u_w
-    a = 0.06962415;
-    b = -64.32664328;
+    p = get_staticID_parms();
+    a = p.a_fu;
+    b = p.b_fu;
     u_w = a * u_p + b;
 end
 

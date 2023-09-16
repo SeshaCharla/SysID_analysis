@@ -1,4 +1,4 @@
-function p = get_static_parms()
+function p = get_staticID_parms()
     %% Identified parameters from static experiments
     p = struct;
     % Force stuff

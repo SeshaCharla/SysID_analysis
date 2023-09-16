@@ -1,14 +1,9 @@
 function plot_bode(Gc, N, nom, file_name)
-    arguments
-        Gc;
-        N;
-        nom;
-        file_name;
-    end
+    % Plot the bode plots
     b_opts = bodeoptions('cstprefs');
     b_opts.Grid = 'on';
-    b_opts.XLim = {[0 300]};
-    b_opts.XLimMode= 'auto';
+    b_opts.XLimMode= 'manual';
+    b_opts.XLim = {[0.1, 200]};
     h = {};
     figure();
     hold on;
