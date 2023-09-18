@@ -29,7 +29,7 @@ end
 plot_bode(tr_funcs, N, nom, "BodePlot_tfest");
 %% Comparing the results using frequency domain
 idf_data = gen_idfdata(Gc, fs, N);
-sys_compare(idf_data, tr_funcs, N, nom, expt);
+sys_compare(idf_data, tr_funcs, N, nom, expt, 'freq_Compare_');
 %% Comparing results using time domain chirp data
 tl = 20;
 fl = 25;
@@ -46,6 +46,6 @@ for i = 1:N
     idc_data{i} = detrend(idc_data_tr,1);
 end
 % Comparing the results in time domain
-sys_compare(idc_data, tr_funcs, N, nom, expt);
+sys_compare(idc_data, tr_funcs, N, nom, expt, 'time_Compare_');
 %% Save parameter data
 save("libs\tf_parms.mat", "pvec", "dpvec", '-mat');

@@ -15,7 +15,7 @@ plot(nom.u, p_tf.K, "+-")
 plot_var(gca, nom.u, p_tf.K, p_tf.sig_K, 2, N)
 plot(nom.u, Vin, "o-")
 xlabel('$u_{\omega_0}$', 'Interpreter','latex');
-ylabel('$K = V_{in}$', 'Interpreter','latex');
+ylabel('$K = V_{in}(1 + \delta v)$', 'Interpreter','latex');
 hold off
 grid on;
 legend('K', '','V_{in}', 'Location','best')
