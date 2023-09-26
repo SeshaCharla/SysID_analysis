@@ -62,12 +62,20 @@ M = np.delete(M, 38)
 # C_T
 sol_T = nnls(A_F, F)
 C_T = sol_T[0][0]
+sigma_2_CT = rd.calc_COV(A_F, F, sol_T[0]);
+sigma_CT = np.sqrt(sigma_2_CT[0, 0]);
 
 # M_f, b, C_D
 sol_D = nnls(A_M, M)
 C_D = sol_D[0][2]
 b_f = sol_D[0][1]
 M_f = sol_D[0][0]
+cov_CD = rd.calc_COV(A_M, M, sol_D[0])
+[lds, ld_vec] = np.linalg.eig(cov_CD)
+sig_bf = np.sqrt(lds[1])
+sig_Mf = np.sqrt(lds[0])
+sig_CD = np.sqrt(lds[2])
+
 
 # ------------------------------------------------------------------------------
 # Goodness of fit

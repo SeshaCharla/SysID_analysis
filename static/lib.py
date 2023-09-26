@@ -37,6 +37,11 @@ def get_static_means(data = np.array([]), f = 100, dt = 10, front_offset = 600, 
 def calc_R(y, y_hat):
     return 1 - (np.sum((y - y_hat)**2)/(np.sum((y-np.mean(y))**2)))
 
+def calc_COV(A, b, x):
+    """ Calcuate the \sigma for the esitmates"""
+    return np.linalg.inv(A.T @ A) * np.var((x@A.T)-b)
+
+
 
 def get_static_uVomega(dir):
     """Read the data files and get u, V and \omega data"""
